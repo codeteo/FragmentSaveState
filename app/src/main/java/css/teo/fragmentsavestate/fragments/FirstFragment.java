@@ -32,6 +32,7 @@ public class FirstFragment extends Fragment {
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
+        outState.putBoolean("saved", saved);
         super.onSaveInstanceState(outState);
     }
 
@@ -50,6 +51,10 @@ public class FirstFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_first, container, false);
         ButterKnife.bind(this, view);
+
+        if (savedInstanceState != null) {
+            saved = savedInstanceState.getBoolean("saved");
+        }
 
         if (saved) {
             Toast.makeText(getActivity(), "SAVED!!!!", Toast.LENGTH_SHORT)
