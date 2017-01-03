@@ -6,6 +6,7 @@ import android.widget.FrameLayout;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import css.teo.fragmentsavestate.fragments.FirstFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,5 +18,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+        getFragmentManager().beginTransaction()
+                .replace(R.id.fl_container, FirstFragment.newInstance())
+                .addToBackStack(null)
+                .commit();
+
     }
+
 }
