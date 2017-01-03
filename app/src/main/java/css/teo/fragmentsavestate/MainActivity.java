@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
 
         getFragmentManager().beginTransaction()
                 .replace(R.id.fl_container, FirstFragment.newInstance())
-                .addToBackStack(null)
                 .commit();
 
     }
