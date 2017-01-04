@@ -8,12 +8,17 @@
 
     <Button
         android:id="@+id/btn_frag_1"
-        android:text="Fragment 1"
+        android:text="Uses savedInstanceState"
         android:layout_width="wrap_content" android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/btn_frag_2"
-        android:text="Fragment 2"
+        android:text="Uses Parcelable object to save state"
+        android:layout_width="wrap_content" android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_frag_3"
+        android:text="Uses Icepick lib to save state"
         android:layout_width="wrap_content" android:layout_height="wrap_content" />
 
     <FrameLayout

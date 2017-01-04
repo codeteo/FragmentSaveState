@@ -11,6 +11,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import css.teo.fragmentsavestate.fragments.FirstFragment;
 import css.teo.fragmentsavestate.fragments.SecondFragment;
+import css.teo.fragmentsavestate.fragments.ThirdFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.fl_container) FrameLayout flContainer;
     @BindView(R.id.btn_frag_1) Button btnFragmentOne;
     @BindView(R.id.btn_frag_2) Button btnFragmentTwo;
+    @BindView(R.id.btn_frag_3) Button btnFragmentThree;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 getFragmentManager().beginTransaction()
                         .replace(R.id.fl_container, SecondFragment.newInstance())
+                        .commit();
+            }
+        });
+
+        btnFragmentThree.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.fl_container, ThirdFragment.newInstance())
                         .commit();
             }
         });
