@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import butterknife.ButterKnife;
 import css.teo.fragmentsavestate.R;
+import css.teo.fragmentsavestate.state.SecondFragmentState;
 
 /**
  * Second Fragment
@@ -18,11 +19,12 @@ import css.teo.fragmentsavestate.R;
 public class SecondFragment extends Fragment {
 
     public static final String TAG = "SECOND-FRAGMENT";
+    public static final String KEY_SAVED = "saved_state";
 
     private boolean saved = false;
+    private SecondFragmentState state;
 
     public static SecondFragment newInstance() {
-
         Bundle args = new Bundle();
 
         SecondFragment fragment = new SecondFragment();
@@ -32,13 +34,11 @@ public class SecondFragment extends Fragment {
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
-        outState.putBoolean("saved", saved);
+        state = SecondFragmentState.builder()
+                .setSaved(true)
+                .build();
+        outState.putParcelable(KEY_SAVED, state);
         super.onSaveInstanceState(outState);
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
     }
 
     @Override
@@ -53,7 +53,10 @@ public class SecondFragment extends Fragment {
         ButterKnife.bind(this, view);
 
         if (savedInstanceState != null) {
-            saved = savedInstanceState.getBoolean("saved");
+            state = savedInstanceState.getParcelable(KEY_SAVED);
+            if (state != null) {
+                saved = state.saved();
+            }
         }
 
         if (saved) {
